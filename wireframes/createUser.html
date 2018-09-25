@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Create User | Sports Warehouse</title>
+<link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-grid.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="wrapper">
+        <div id="header">
+              
+            <a href="Index.html">LOGO here links back to home page</a>
+            <div id="admin">
+        
+        	</div> <!-- admin -->
+			<p>Create User page - allows the admistrator to create a user</p>
+  </div> <!-- header -->  
+          <div id="content">
+          <div id="left">
+            <h1>Admin Menu</h1>
+            <a href="ManageCategory.html">Manage Categories</a> <br />
+            <a href="ManageProducts.html">Manage Products</a> <br />
+            <a href="createUser.html">Create User</a>
+            <a href="changePassword.html">Change Password</a>
+          </div> <!-- left -->
+          <div id="center">
+                <h2 class="text-center">Create User</h2>
+                <form action="createUser.php" method="post" id="form" novalidate="novalidate">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fName">Frist Name</label>
+                                    <input type="text" name="fName" id="fName" class="form-control" required="" aria-required="true">  
+                                </div>    
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lName">Surname</label>
+                                    <input type="text" name="lName" id="lName" class="form-control" required="" aria-required="true">  
+                                </div>    
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" required="" aria-required="true">  
+                                </div>    
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" required="" aria-required="true">  
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm">Confirm Password</label>
+                                    <input type="password" name="confirm" id="confirm" class="form-control" required="" aria-required="true">  
+                                </div>    
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+          </div> 
+          <!-- center -->
+       
+   
+        <div id="footer">
+            © Web Development 
+        </div><!-- footer -->
+        </div><!-- content -->
+
+</div> <!-- wrapper -->
+
+</body>
+</html>

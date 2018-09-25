@@ -1,0 +1,114 @@
+﻿body 
+{
+	font-family: Arial;
+	font-size: small;
+}
+
+h1
+{
+	font-size: medium;
+}
+
+img {
+	max-width: 100%;
+}
+
+
+
+#wrapper
+{
+	margin: auto;
+	width: 750px;
+	border: solid 1px #FF3399;
+}
+
+#header
+{
+	padding-left: 10px;
+	padding-top: 10px;
+	border-bottom: solid 1px #FF3399;
+}
+
+#admin
+{
+	padding-right: 10px;
+	padding-bottom: 5px;
+	text-align: right;
+}
+
+.brands {
+	background-color: #000;
+	padding: 1em 0;
+}
+
+#admin a
+{
+	color: #FF3399;
+}
+
+#content
+{
+	padding: 10px;
+	
+	background-position: left;
+	background-color: White;
+}
+
+#left
+{
+	float:left;
+	width: 200px;
+	padding-right: 10px;
+}
+
+#center
+{
+	float:left;
+	width: 720px;
+}
+
+
+
+#footer
+{
+	clear:both;
+	margin-top: 10px;
+	text-align: center;
+	font-size: smaller;
+	color: #FF3399;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+
+
+.floatLeft
+{
+	float:left;
+	width: 100px;
+}
+
+.clearFloat
+{
+	clear:both;
+}
+
+.error
+{
+	color: #FF3399;
+}
+
+.homeLink
+{
+	text-decoration: none;
+	border: none;
+}
+
+.selectedItem
+{
+	
+	padding-right: 15px;
+}

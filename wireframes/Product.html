@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Product Name | Sports Warehouse</title>
+<link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-grid.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <a href="home.html">LOGO here links back to home page</a>
+    <div id="admin">
+      <a  href="login.html">Login</a>        	
+      <a  href="checkout.html">View Cart</a>        	
+    </div> 
+              <!-- admin -->
+        <p>Product page - displays a the product</p>
+    </div> <!-- header -->  
+    <div id="content">
+      <div id="center">
+        <section>
+            <h2 class="text-center">adidas Euro16 Top Soccer Ball</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="Images/soccer-ball.jpg" alt="Product Image of adidas Euro16 Top Soccer Ball" class="img">
+                </div>
+                <div class="col-md-6">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?</p>
+                    <form action="product.php?id=1" method="post">
+                        <div class="form-group">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" name="quantity" id="quantity" value="1" class="form-control" style="display: inline; width: 173px;">
+                        </div>
+                        <button tpye="button" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+      </div> <!-- center -->
+      <div id="footer">
+        © Copyright 2020 Sports Warehouse. All rights reserved. Website made by Awesomesauce Design. Development 
+      </div><!-- footer -->
+    </div><!-- content -->
+  </div> <!-- wrapper -->
+</body>
+</html>

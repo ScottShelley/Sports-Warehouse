@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Manage Categories | Sports Warehouse</title>
+<link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-grid.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <a href="Index.html">LOGO here links back to home page</a>
+            <div id="admin">
+                <a  href="adminPages/maintainCategories.aspx">Admin Access</a>
+        	</div> <!-- admin -->
+			<p>Manage category page - Provides insert, update and delete functionality for categories</p>
+        </div> <!-- header -->  
+        <div id="content">
+          <div id="left">
+            <h1>Admin Menu</h1>
+                <a href="ManageCategory.html">Manage Categories</a> <br />
+                <a href="ManageProducts.html">Manage Products</a> <br />
+                <a href="createUser.html">Create User</a>
+                <a href="changePassword.html">Change Password</a>
+            </div> <!-- left -->
+            <div id="center">
+                    <div id="app" class="create">
+                            <button type="button" v-if="!isAddForm" @click="isAddForm = true" class="btn btn-primary">Create Category</button>
+                            <form id="myform" action="manageCategories.php" method="post" v-if="isAddForm">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>  
+                                <button type="submit" name="add" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-secondary" @click="isAddForm = false">Cancel</button>
+                            </form>
+                        
+                            <table id="myTable" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="category in categories">
+                                        <td>{{ category.Id }}</td>
+                                        <td>{{ category.Name }}</td>
+                                        <td class="float-right">
+                                            <button type="button" class="btn btn-info btn-sm" @click="getEditForm(category)">Edit</button>
+                                            <a class="btn btn-danger btn-sm" :href="'deleteCategory.php?id=' + category.Id">Remove</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        
+                            <form action="manageCategories.php" method="post" v-if="isEditForm">
+                                <input type="hidden" name="id" v-model="id">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control"  v-model="name" required>  
+                                </div> 
+                                <button type="submit" name="edit" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-secondary" @click="isEditForm = false">Cancel</button>
+                            </form>
+                        </div>     
+            </div> 
+          <!-- center -->
+       
+   
+        <div id="footer">
+            © Web Development 
+        </div><!-- footer -->
+        </div><!-- content -->
+
+</div> <!-- wrapper -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+
+        $("#myform").validate({
+            rules: {
+                name: "required" 
+            },
+            messages: {
+                name: "Name is required!"
+            }
+        });
+    });
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            isAddForm: false,
+            isEditForm: false,
+            name: null,
+            id: null,
+            error: null,
+            categories: [{"Id":"1","0":"1","Name":"Shoes","1":"Shoes"},{"Id":"2","0":"2","Name":"Helmets","1":"Helmets"},{"Id":"3","0":"3","Name":"Pants","1":"Pants"},{"Id":"4","0":"4","Name":"Tops","1":"Tops"},{"Id":"5","0":"5","Name":"Balls","1":"Balls"},{"Id":"6","0":"6","Name":"Equipment","1":"Equipment"},{"Id":"7","0":"7","Name":"Training Gear","1":"Training Gear"}]
+        },
+        methods: {
+            getEditForm(model) {
+                this.isEditForm = true;
+                this.name = model.Name;
+                this.id = model.Id;
+            }
+        }
+    });
+</script> 
+
+</body>
+</html>

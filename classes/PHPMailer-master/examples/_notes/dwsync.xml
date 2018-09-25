@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="contactform.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656880000000" remote="131740354200000000" Dst="1" />
+<file name="code_generator.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656880000000" remote="131740354200000000" Dst="1" />
+<file name="contents.html" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656880000000" remote="131740354200000000" Dst="1" />
+<file name="contentsutf8.html" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656880000000" remote="131740354200000000" Dst="1" />
+<file name="DKIM.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656880000000" remote="131740354200000000" Dst="1" />
+<file name="exceptions.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656880000000" remote="131740354200000000" Dst="1" />
+<file name="gmail.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656880000000" remote="131740354200000000" Dst="1" />
+<file name="gmail_xoauth.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="index.html" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="mail.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="mailing_list.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="pop_before_smtp.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="sendmail.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="send_file_upload.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="send_multiple_file_upload.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="signed-mail.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="smtp.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="smtp_check.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="smtp_no_auth.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="ssl_options.phps" server="infoweb.hornsby.tafensw.edu.au/www/" local="131680656900000000" remote="131740354200000000" Dst="1" />
+<file name="pop_before_smtp.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="DKIM.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656880000000" remote="131740350600000000" Dst="1" />
+<file name="mailing_list.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="index.html" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="send_multiple_file_upload.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="code_generator.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656880000000" remote="131740350600000000" Dst="1" />
+<file name="gmail_xoauth.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="contents.html" server="infoweb.hornsby.tafensw.edu.au" local="131680656880000000" remote="131740350600000000" Dst="1" />
+<file name="contentsutf8.html" server="infoweb.hornsby.tafensw.edu.au" local="131680656880000000" remote="131740350600000000" Dst="1" />
+<file name="mail.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="send_file_upload.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="sendmail.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="gmail.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656880000000" remote="131740350600000000" Dst="1" />
+<file name="smtp.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="exceptions.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656880000000" remote="131740350600000000" Dst="1" />
+<file name="smtp_check.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="smtp_no_auth.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="signed-mail.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="ssl_options.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656900000000" remote="131740350600000000" Dst="1" />
+<file name="contactform.phps" server="infoweb.hornsby.tafensw.edu.au" local="131680656880000000" remote="131740350600000000" Dst="1" />
+</dwsync>

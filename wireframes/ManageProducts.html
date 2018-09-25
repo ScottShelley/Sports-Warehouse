@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Manage Product | Sports Warehouse</title>
+<link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+<link href="bootstrap-grid.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <a href="Index.html">LOGO here links back to home page</a>
+            <div id="admin">
+                <a  href="adminPages/maintainCategories.aspx">Admin Access</a>
+        	</div> <!-- admin -->
+			<p>Manage Product page - Provides insert, update and delete functionality for categories</p>
+        </div> <!-- header -->  
+        <div id="content">
+          <div id="left">
+            <h1>Admin Menu</h1>
+                <a href="ManageCategory.html">Manage Categories</a> <br />
+                <a href="ManageProducts.html">Manage Products</a> <br />
+                <a href="createUser.html">Create User</a>
+                <a href="changePassword.html">Change Password</a>
+            </div> <!-- left -->
+            <div id="center">  
+                    <div id="app">
+                            <button type="button" v-if="!isAddForm" @click="isAddForm = true; clearForm()" class="btn btn-primary">Create Product</button>
+                            <form id="myform" action="manageProducts.php" method="post" enctype="multipart/form-data" v-if="isAddForm">
+                                <h2>Add Product</h2>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control" v-model="form.name" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" name="description" id="description" class="form-control" v-model="form.description" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" name="price" id="price" class="form-control" v-model="form.price" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="salePrice">Sale Price</label>
+                                    <input type="text" name="salePrice" id="salePrice" class="form-control" v-model="form.salePrice" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="photoPath">Photo</label>
+                                    <input type="file" name="photoPath" id="photoPath" class="form-control" v-model="form.photo" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="featured" v-model="form.featured">
+                                            Featured
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <select type="text" name="categoryID" id="category" class="form-control" v-model="form.category" required>
+                                        <option v-for="category in categories" :value="category.Id">{{ category.Name }}</option>
+                                    </select>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>
+                                <button type="submit" name="add" class="btn btn-primary">Add</button>
+                                <button type="button" class="btn btn-secondary" @click="isAddForm = false; clearForm()">Cancel</button>
+                            </form>
+                        
+                            <table id="myTable" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Sale price</th>
+                                        <th>Featured</th>
+                                        <th>Image</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="product in products">
+                                        <td>{{ product.Id }}</td>
+                                        <td>{{ product.Name }}</td>
+                                        <td>{{ product.CategoryName }}</td>
+                                        <td>{{ product.Description }}</td>
+                                        <td>{{ product.Price }}</td>
+                                        <td>{{ product.SalePrice }}</td>
+                                        <td v-if="product.Featured == 1">Yes</td>
+                                        <td v-if="product.Featured == 0">No</td>
+                                        <td><img :src="product.Photo" :alt="'Image of ' + product.Name"></td>
+                                        <td class="float-right">
+                                            <button type="button" class="btn btn-info btn-sm" @click="getEditForm(product)">Edit</button>
+                                            <a class="btn btn-danger btn-sm" :href="'deleteProduct.php?id=' + product.Id">Remove</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <form action="manageProducts.php" method="post" v-if="isEditForm">
+                                <h2>Edit Product</h2>
+                                <input type="hidden" name="id" v-model="form.id">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control"  v-model="form.name" required>  
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" name="description" id="description" class="form-control" v-model="form.description" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <input type="text" name="price" id="price" class="form-control" v-model="form.price" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="salePrice">Sale Price</label>
+                                    <input type="text" name="salePrice" id="salePrice" class="form-control" v-model="form.salePrice" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>  
+                                <div class="form-group">
+                                    <label for="photo">Photo</label>
+                                    <input type="text" name="photo" id="photo" class="form-control" v-model="form.photo" required>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" name="featured" type="checkbox" v-model="form.featured">
+                                            Featured
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <select type="text" name="categoryID" id="category" class="form-control" v-model="form.category" required>
+                                        <option v-for="category in categories" :value="category.Id">{{ category.Name }}</option>
+                                    </select>
+                                    <p v-if="error" class="error">{{error}}</p>
+                                </div>
+                                <button type="submit" name="edit" class="btn btn-primary">Save</button>
+                                <button type="button" class="btn btn-secondary" @click="isEditForm = false">Cancel</button>
+                            </form>
+                        </div> 
+            </div> 
+          <!-- center -->
+       
+   
+        <div id="footer">
+            © Web Development 
+        </div><!-- footer -->
+        </div><!-- content -->
+
+</div> <!-- wrapper -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    });
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            isAddForm: false,
+            isEditForm: false,
+            id: null,
+            error: null,
+            products: [{"Id":"1","0":"1","Name":"adidas Euro16 Top Soccer Ball","1":"adidas Euro16 Top Soccer Ball","Photo":"img\/soccer-ball.jpg","2":"img\/soccer-ball.jpg","Price":"46.00","3":"46.00","SalePrice":"43.95","4":"43.95","Description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","5":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","Featured":"1","6":"1","CategoryID":"5","7":"5","CategoryName":"Balls","8":"Balls"},{"Id":"2","0":"2","Name":"Pro-tec Classic Skate Helmet","1":"Pro-tec Classic Skate Helmet","Photo":"img\/skate-helmet.jpg","2":"img\/skate-helmet.jpg","Price":"70.00","3":"70.00","SalePrice":null,"4":null,"Description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","5":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","Featured":"1","6":"1","CategoryID":"2","7":"2","CategoryName":"Helmets","8":"Helmets"},{"Id":"3","0":"3","Name":"Nike Sport 600ml Water Bottle","1":"Nike Sport 600ml Water Bottle","Photo":"img\/water-bottle.jpg","2":"img\/water-bottle.jpg","Price":"17.50","3":"17.50","SalePrice":"15.00","4":"15.00","Description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","5":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","Featured":"1","6":"1","CategoryID":"7","7":"7","CategoryName":"Training Gear","8":"Training Gear"},{"Id":"4","0":"4","Name":"Sting ArmaPlus Boxing Gloves","1":"Sting ArmaPlus Boxing Gloves","Photo":"img\/boxing-gloves.jpg","2":"img\/boxing-gloves.jpg","Price":"79.95","3":"79.95","SalePrice":null,"4":null,"Description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","5":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","Featured":"1","6":"1","CategoryID":"7","7":"7","CategoryName":"Training Gear","8":"Training Gear"},{"Id":"5","0":"5","Name":"Asics Gel Lethal Tigreor 8 IT ","1":"Asics Gel Lethal Tigreor 8 IT ","Photo":"img\/football-boots.jpg","2":"img\/football-boots.jpg","Price":"160.00","3":"160.00","SalePrice":null,"4":null,"Description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","5":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia reprehenderit voluptate laboriosam omnis quisquam fugit deserunt iure error. Nobis, consequuntur. Eaque molestiae tempora rerum. Ullam atque rerum vel eaque corrupti?","Featured":"1","6":"1","CategoryID":"1","7":"1","CategoryName":"Shoes","8":"Shoes"}],
+            categories: [{"Id":"1","0":"1","Name":"Shoes","1":"Shoes"},{"Id":"2","0":"2","Name":"Helmets","1":"Helmets"},{"Id":"3","0":"3","Name":"Pants","1":"Pants"},{"Id":"4","0":"4","Name":"Tops","1":"Tops"},{"Id":"5","0":"5","Name":"Balls","1":"Balls"},{"Id":"6","0":"6","Name":"Equipment","1":"Equipment"},{"Id":"7","0":"7","Name":"Training Gear","1":"Training Gear"}],
+            form: {
+                id: null,
+                name: null,
+                description: null,
+                price: null,
+                salePrice: null,
+                photo: null,
+                featured: null,
+                category: null
+            }
+        },
+        methods: {
+            getEditForm(model) {
+                this.isAddForm = false;
+                this.isEditForm = true;
+                this.form.name = model.Name;
+                this.form.id = model.Id;
+                this.form.description = model.Description;
+                this.form.price = model.Price;
+                this.form.salePrice = model.SalePrice;
+                this.form.photo = model.Photo;
+                this.form.category = model.CategoryID;
+                if (model.Featured == 1) {
+                    this.form.featured = true;
+                }
+                else
+                {
+                    this.form.featured = false;
+                }
+            },
+            clearForm() {
+                this.isEditForm = false;
+                this.form.name = null;
+                this.form.id = null;
+                this.form.description = null;
+                this.form.price = null;
+                this.form.salePrice = null;
+                this.form.photo = null;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

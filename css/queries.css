@@ -1,0 +1,139 @@
+.navbar-toggler {
+    display: none;
+}
+
+.navbar-small-devices {
+    display: none;
+}
+
+@keyframes dropdown {
+    0% {
+        transform: translateY(-100);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.show {
+    animation: dropdown 50s infinite;
+}
+
+@media only screen and (max-width: 540px) {
+    .navbar-small-devices {
+        display: block;
+    }
+
+    .nav-d-none {
+        display: none;
+    }
+
+    .navbar-toggler {
+        display: block;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: #fff;
+        font-size: 1.5rem;
+        vertical-align: middle;
+    }
+
+    .navbar-collapse {
+        display: none !important;
+    }
+
+    .show {
+        display: block !important;
+        position: absolute;
+        top: 50px;
+        /* bottom: 0; */
+        left: 0;
+        z-index: 1;
+        background-color: #00aced;
+        padding-bottom: 4em;
+        animation-name: dropdown;
+        animation-duration: 4s;
+    }
+
+    .nav-small {
+        list-style-type: square !important;
+        list-style-image: url("../img/circle.png") !important;
+        padding-left: 40px !important;
+    }
+
+    .login-lockimg {
+        list-style-image: url("../img/lock.png") !important;
+        display: list-item;
+    }
+
+    .navbar li {
+        float: none;
+        
+    }
+
+    .navbar li a {
+        text-align: left;
+    }
+
+    /* Header */
+
+    .search-form {
+        float: none;
+    }
+
+    .search-form input {
+        width: 85%;
+    }
+
+    /* Second Navbar */
+
+    .nav-secondary {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        margin-bottom: 1em;
+    }
+
+    .nav-secondary li {
+        float: left;
+        width: 48%;
+        border: 1px solid #00aced;
+        margin: 2px;
+        padding: 0;
+    }
+
+    .nav-secondary a::after {
+        content: ">";
+        float: right;
+        color: #00aced;
+    }
+
+    .nav-secondary .active::after {
+        color: inherit;
+    }
+
+    .nav-secondary .active {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    /* Products */
+    .products-border {
+        margin: 0;
+        border: none;
+    }
+
+    /* Brands */
+    .section-brands .brands-container {
+        margin: 1em -15px;
+    }
+
+    .section-brands .brands {
+        margin: 0;
+        margin-top: 1em;
+
+        border-radius: 0;
+        height: auto;
+        line-height: normal;
+        padding: 1em 0;
+    }
+
+}
